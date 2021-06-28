@@ -1,11 +1,9 @@
 ﻿using System.Threading.Tasks;
-using DSharpPlus;
 using DSharpPlus.Entities;
 using DSharpPlus.CommandsNext;
 using DSharpPlus.CommandsNext.Attributes;
-using DSharpPlus.Lavalink;
-using System.Linq;
 using DSharpPlus.VoiceNext;
+using System;
 
 namespace Shuna_chan.Commands
 {
@@ -50,5 +48,9 @@ namespace Shuna_chan.Commands
             await ctx.RespondAsync($"Connected to `{chn.Name}`");
         }
 
+        internal static void JoinCommand()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

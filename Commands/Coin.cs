@@ -7,7 +7,7 @@ namespace Shuna_chan.Commands
 {
     class Coin : BaseCommandModule
     {
-        [Command("coin")]
+        [Command("coin"), Description("Flips a two sided coin.")]
         public async Task CoinCommand(CommandContext ctx)
         {
             Random rand = new Random();

@@ -17,7 +17,7 @@ namespace Shuna_chan
         {
             var discord = new DiscordClient(new DiscordConfiguration()
             {
-                Token = "",
+                Token = Credentials.discordToken,
                 TokenType = TokenType.Bot
             });
 
@@ -25,10 +25,10 @@ namespace Shuna_chan
 
             var commands = discord.UseCommandsNext(new CommandsNextConfiguration()
             {
-                StringPrefixes = new[] { "+" }
+                StringPrefixes = new[] { Credentials.prefix }
             });
 
-            commands.RegisterCommands<Play>();
+            // commands.RegisterCommands<Play>();
             commands.RegisterCommands<Coin>();
             commands.RegisterCommands<Intro>();
             commands.RegisterCommands<Join>();

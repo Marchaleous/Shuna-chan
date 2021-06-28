@@ -11,9 +11,11 @@ namespace Shuna_chan.Commands
         [Command("setactivity"), Description("Sets bot activity.")]
         public async Task SetActivityCommand(CommandContext ctx, [RemainingText] string name)
         {
+
             DiscordActivity activity = new DiscordActivity();
-            DiscordClient discord = ctx.Client;
+
             activity.Name = name;
+            DiscordClient discord = ctx.Client;
 
             await discord.UpdateStatusAsync(activity);
         }

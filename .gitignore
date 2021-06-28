@@ -9,6 +9,7 @@
 *.user
 *.userosscache
 *.sln.docstates
+Credentials.cs
 config.json
 TASKS.txt
 

@@ -10,8 +10,8 @@ namespace Shuna_chan.Commands
 {
     class Play : BaseCommandModule
     {
-        [Command("play"), Description("Plays an audio file.")]
-        public async Task PlayCommand(CommandContext ctx, [RemainingText, Description("Full path to the file to play.")] string filename)
+        [Command("play"), Description("Plays audio from YouTube.")]
+        public async Task PlayCommand(CommandContext ctx, [RemainingText] string name)
         {
             // check whether VNext is enabled
             var vnext = ctx.Client.GetVoiceNext();
@@ -32,10 +32,10 @@ namespace Shuna_chan.Commands
             }
 
             // check if file exists
-            if (!File.Exists(filename))
+            if (!File.Exists(name))
             {
                 // file does not exist
-                await ctx.RespondAsync($"File `{filename}` does not exist.");
+                await ctx.RespondAsync($"File `{name}` does not exist.");
                 return;
             }
 
@@ -45,7 +45,7 @@ namespace Shuna_chan.Commands
 
             // play
             Exception exc = null;
-            await ctx.Message.RespondAsync($"Playing `{filename}`");
+            await ctx.Message.RespondAsync($"Playing `{name}`");
 
             try
             {
@@ -54,7 +54,7 @@ namespace Shuna_chan.Commands
                 var psi = new ProcessStartInfo
                 {
                     FileName = "ffmpeg.exe",
-                    Arguments = $@"-i ""{filename}"" -ac 2 -f s16le -ar 48000 pipe:1 -loglevel quiet",
+                    Arguments = $@"-i ""{name}"" -ac 2 -f s16le -ar 48000 pipe:1 -loglevel quiet",
                     RedirectStandardOutput = true,
                     UseShellExecute = false
                 };
@@ -70,7 +70,7 @@ namespace Shuna_chan.Commands
             finally
             {
                 await vnc.SendSpeakingAsync(false);
-                await ctx.Message.RespondAsync($"Finished playing `{filename}`");
+                await ctx.Message.RespondAsync($"Finished playing `{name}`");
             }
 
             if (exc != null)

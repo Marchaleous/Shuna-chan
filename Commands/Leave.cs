@@ -1,17 +1,13 @@
 ﻿using System.Threading.Tasks;
-using DSharpPlus;
-using DSharpPlus.Entities;
 using DSharpPlus.CommandsNext;
 using DSharpPlus.CommandsNext.Attributes;
-using DSharpPlus.Lavalink;
-using System.Linq;
 using DSharpPlus.VoiceNext;
 
 namespace Shuna_chan.Commands
 {
     class Leave : BaseCommandModule
     {
-        [Command("leave"), Description("Leaves a voice channel.")]
+        [Command("leave"), Description("Leaves the voice channel.")]
         public async Task LeaveCommand(CommandContext ctx)
         {
             // check whether VNext is enabled
