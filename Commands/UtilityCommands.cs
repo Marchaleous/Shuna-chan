@@ -5,10 +5,11 @@ using System.Threading.Tasks;
 
 namespace Shuna_chan.Commands
 {
-    class Coin : BaseCommandModule
+    // Help, About, CoinToss, Purge, Restart, Terminate
+    class UtilityCommands : BaseCommandModule
     {
-        [Command("coin"), Description("Flips a two sided coin.")]
-        public async Task CoinCommand(CommandContext ctx)
+        [Command("cointoss"), Description("Flips a two sided coin.")]
+        public async Task CoinToss(CommandContext ctx)
         {
             Random rand = new Random();
             int flipNum = rand.Next(2);
